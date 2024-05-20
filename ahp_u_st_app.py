@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import random
-import streamlit_mermaid as stmd
+# import streamlit_mermaid as stmd
 import ahp
 
 
