@@ -22,3 +22,12 @@ def check_consistency(m, w):
     # TODO: generate ri dynamically to account for different grains of input matrices (e.g. 9-0-9 vs 5-0-5)
     ri = [0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.46, 1.49][len(cm)]
     return ci / ri
+
+def utility(categories: dict[str, list[str]], weights: dict[str, float], candidate):
+    total = 0
+    for c, cr in categories.items():
+        sub = 0
+        for x in cr:
+            sub += (candidate[x] * weights[x] if x in weights else 0)
+        total += sub * weights[c]
+    return total
