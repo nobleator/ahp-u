@@ -23,6 +23,7 @@ def check_consistency(m, w):
     ri = [0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.46, 1.49][len(cm)]
     return ci / ri
 
+
 def utility(categories: dict[str, list[str]], weights: dict[str, float], candidate):
     total = 0
     for c, cr in categories.items():

@@ -18,7 +18,7 @@ st.write("## Categories")
 st.write(f"Career choice has been broken down into {len(categories)} categories: {', '.join(categories)}")
 st.image(svg.generate_svg(categories))
 st.write("As you adjust your preferences the percentage allocated to each category automatically update.")
-category_weights = ahp_ui.foo(categories.keys())
+category_weights = ahp_ui.draw_weight_sliders(categories.keys())
 for idx, category in enumerate(categories.keys()):
     all_weights[category] = float(category_weights[category_weights['item'] == category].weights[idx])
 
@@ -26,7 +26,7 @@ for category, criteria_options in categories.items():
     st.write(f"### {category} ({all_weights[category]:.1%})")
     criteria = st.multiselect(label="Please select the criteria that are important to you", options=criteria_options, key=category)
     if len(criteria) > 0:
-        final = ahp_ui.foo(criteria)
+        final = ahp_ui.draw_weight_sliders(criteria)
         for idx, c in enumerate(criteria):
             all_weights[c] = float(final[final['item'] == c].weights[idx])
 

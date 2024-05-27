@@ -4,7 +4,7 @@ import pandas as pd
 import ahp
 
 
-def foo(categories):
+def draw_weight_sliders(categories):
     with st.expander("Pairwise criteria comparisons for all categories"):
         st.write("Which is more important?")
         m = np.eye(len(categories))
