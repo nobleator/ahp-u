@@ -4,17 +4,20 @@ import streamlit as st
 import random
 import ahp
 import ahp_ui
+import svg
 
 
 all_weights = {}
 categories = {
-    "Barriers to Entry": ["Unemployment rate", "Higher education requirements", "Difficulty", "Competitiveness"],
+    "Barriers to Entry": ["Unemployment rate", "Education requirements", "Difficulty", "Competitiveness"],
     "Quality of Life": ["Work-life balance", "Geographic mobility", "Altruism", "Physical demands"],
     "Outcomes": ["Entry-level salary", "Career growth potential", "Average debt load"],
 }
-
+st.write()
 st.write("## Categories")
-st.write(f"Career choice has been broken down into {len(categories)} categories: {', '.join(categories)}. As you adjust your preferences the percentage allocated to each category automatically update.")
+st.write(f"Career choice has been broken down into {len(categories)} categories: {', '.join(categories)}")
+st.image(svg.generate_svg(categories))
+st.write("As you adjust your preferences the percentage allocated to each category automatically update.")
 category_weights = ahp_ui.foo(categories.keys())
 for idx, category in enumerate(categories.keys()):
     all_weights[category] = float(category_weights[category_weights['item'] == category].weights[idx])

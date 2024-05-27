@@ -4,6 +4,7 @@ import streamlit as st
 import random
 import ahp
 import ahp_ui
+import svg
 
 
 # TODO: user input criteria in N categories
@@ -28,7 +29,9 @@ categories = {
 # degrees = st.multiselect("What degree programs are you interested in?", ["Nursing", "Pre-med", "Pre-law", "Computer science", "Business"])
 
 st.write("## Categories")
-st.write(f"School choice has been broken down into {len(categories)} categories: {', '.join(categories)}. As you adjust your preferences the percentage allocated to each category automatically update.")
+st.write(f"School choice has been broken down into {len(categories)} categories: {', '.join(categories)}")
+st.image(svg.generate_svg(categories))
+st.write("As you adjust your preferences the percentage allocated to each category automatically update.")
 category_weights = ahp_ui.foo(categories.keys())
 for idx, category in enumerate(categories.keys()):
     all_weights[category] = float(category_weights[category_weights['item'] == category].weights[idx])
